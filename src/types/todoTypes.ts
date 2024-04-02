@@ -1,6 +1,6 @@
 export const FETCH_TODOS_REQUEST = "FETCH_TODOS_REQUEST";
 export const FETCH_TODOS_SUCCESS = "FETCH_TODOS_SUCCESS";
-export const FETCH_TODOS_FAILURE = "FETCH_TODOS_FAILURE";
+export const FETCH_TODOS_ERROR = "FETCH_TODOS_ERROR";
 export const SWITCH_COMPLETED_FIELD = "SWITCH_COMPLETED_FIELD"
 
 export interface Todo {
@@ -26,7 +26,7 @@ interface FetchTodosSuccessAction {
 }
 
 interface FetchTodosFailureAction {
-  type: typeof FETCH_TODOS_FAILURE;
+  type: typeof FETCH_TODOS_ERROR;
   payload: string;
 }
 

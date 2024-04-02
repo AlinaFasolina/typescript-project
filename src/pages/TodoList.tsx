@@ -1,9 +1,12 @@
 // TodoList.tsx
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchTodos, switchCompleted } from "../store/actions/todoActions";
 import { RootState } from "../store/index";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const Container = styled.div`
   max-width: 800px;
@@ -28,9 +31,10 @@ const TodoTitle = styled.span<{ completed: boolean }>`
 
 function TodoList() {
   const dispatch = useDispatch();
-  const { todos, loading, error } = useSelector(
+  const { todos, loading, error } = useTypedSelector(
     (state: RootState) => state.todos
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     //@ts-ignore
@@ -43,8 +47,9 @@ function TodoList() {
 
   return (
     <Container>
+      <button onClick={() => navigate("/")}>Back to homepage</button>
       <h1>Todo List</h1>
-      {loading && <p>Loading...</p>}
+      {loading && <Oval />}
       {error && <p>Error: {error}</p>}
       {todos.map((todo) => (
         <TodoItem key={todo.id}>

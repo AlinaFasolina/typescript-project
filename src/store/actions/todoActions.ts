@@ -4,20 +4,20 @@ import {
   TodoActionTypes,
   FETCH_TODOS_REQUEST,
   FETCH_TODOS_SUCCESS,
-  FETCH_TODOS_FAILURE,
+  FETCH_TODOS_ERROR,
   SWITCH_COMPLETED_FIELD,
 } from "../../types/todoTypes";
 
 export const fetchTodos = () => {
-  return (dispatch: Dispatch<TodoActionTypes>) => {
+  return function(dispatch: Dispatch<TodoActionTypes>) {
     dispatch({ type: FETCH_TODOS_REQUEST });
     axios
-      .get("https://jsonplaceholder.typicode.com/todos")
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
       .then((response) => {
         dispatch({ type: FETCH_TODOS_SUCCESS, payload: response.data });
       })
       .catch((error) => {
-        dispatch({ type: FETCH_TODOS_FAILURE, payload: error.message });
+        dispatch({ type: FETCH_TODOS_ERROR, payload: error.message });
       });
   };
 };
