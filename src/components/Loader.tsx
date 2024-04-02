@@ -7,7 +7,7 @@ export const Loader: React.FC = () => {
       visible={true}
       height="80"
       width="80"
-      color="#4fa94d"
+      color="#ffc000"
       ariaLabel="oval-loading"
       wrapperStyle={{}}
       wrapperClass=""

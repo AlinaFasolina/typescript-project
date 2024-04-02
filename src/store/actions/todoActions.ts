@@ -9,16 +9,19 @@ import {
 } from "../../types/todoTypes";
 
 export const fetchTodos = () => {
-  return function(dispatch: Dispatch<TodoActionTypes>) {
-    dispatch({ type: FETCH_TODOS_REQUEST });
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
-      .then((response) => {
-        dispatch({ type: FETCH_TODOS_SUCCESS, payload: response.data });
-      })
-      .catch((error) => {
-        dispatch({ type: FETCH_TODOS_ERROR, payload: error.message });
-      });
+  return async function (dispatch: Dispatch<TodoActionTypes>) {
+    try {
+      dispatch({ type: FETCH_TODOS_REQUEST });
+      let response = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      );
+      setTimeout(
+        () => dispatch({ type: FETCH_TODOS_SUCCESS, payload: response.data }),
+        1000
+      );
+    } catch (e) {
+      dispatch({ type: FETCH_TODOS_ERROR, payload: (e as Error).message });
+    }
   };
 };
 
