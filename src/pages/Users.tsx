@@ -35,11 +35,10 @@ export const Users: React.FC = () => {
       {users &&
         users.map((user) => (
           <UserItem
-            key={user.id}
             id={user.id}
+            key={user.id}
             name={user.name}
             email={user.email}
-            address={user.address}
             phone={user.phone}
           />
         ))}

@@ -5,10 +5,9 @@ import TodoList from "./pages/TodoList";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { Users } from "./pages/Users";
-import { User } from "./pages/User";
+import { OneUser } from "./pages/OneUser";
 
 function App() {
-
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -16,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/todos" element={<TodoList />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/users/:id" element={<User/>} />
+          <Route path="/users/:id" element={<OneUser/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

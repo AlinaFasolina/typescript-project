@@ -14,7 +14,7 @@ export interface User {
   id: number;
   name: string;
   email: string;
-  address: Address;
+  address?: Address;
   phone: string;
 }
 
