@@ -17,7 +17,7 @@ export const fetchTodos = () => {
       );
       setTimeout(
         () => dispatch({ type: FETCH_TODOS_SUCCESS, payload: response.data }),
-        1000
+        300
       );
     } catch (e) {
       dispatch({ type: FETCH_TODOS_ERROR, payload: (e as Error).message });

@@ -12,7 +12,7 @@ export function fetchUsers() {
           type: UserActionTypes.FETCH_USERS_SUCCESS,
           payload: res.data,
         });
-      }, 1000);
+      }, 300);
     } catch (e) {
       dispatch({
         type: UserActionTypes.FETCH_USERS_ERROR,
