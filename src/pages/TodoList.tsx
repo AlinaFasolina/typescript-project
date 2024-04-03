@@ -7,12 +7,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-
-const Container = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-`;
+import { Container } from "../styles/main";
 
 const TodoItem = styled.div`
   padding: 10px;

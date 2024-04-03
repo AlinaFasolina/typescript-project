@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { fetchUsers } from "../store/actions/userActons";
 import { useDispatch } from "react-redux";
 import { RootState } from "../store/index";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { UserItem } from "../components/UserItem";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-
+import { Container } from "../styles/main";
 export const Users: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,12 +18,6 @@ export const Users: React.FC = () => {
     //@ts-ignore
     dispatch(fetchUsers());
   }, []);
-
-  const Container = styled.div`
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  `;
 
   return (
     <Container>
