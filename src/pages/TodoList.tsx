@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { fetchTodos, switchCompleted } from "../store/actions/todoActions";
 import { RootState } from "../store/index";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { Container } from "../styles/main";
+import { Breadcrumbs, Container, Crumb } from "../styles/main";
 
 const TodoItem = styled.div`
   padding: 10px;
@@ -42,7 +42,13 @@ function TodoList() {
 
   return (
     <Container>
-      <button onClick={() => navigate("/")}>Back to homepage</button>
+      <Breadcrumbs>
+        <Crumb>
+          <NavLink to="/">Home</NavLink>
+        </Crumb>
+        <Crumb>Todo List</Crumb>
+      </Breadcrumbs>
+
       <h1>Todo List</h1>
       {loading && <Oval />}
       {error && <p>Error: {error}</p>}

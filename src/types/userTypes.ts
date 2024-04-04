@@ -2,6 +2,7 @@ export enum UserActionTypes {
   FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST",
   FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS",
   FETCH_USERS_ERROR = "FETCH_USERS_ERROR",
+  ADD_NEW_USER = "ADD_NEW_USER",
 }
 
 interface Address {
@@ -12,16 +13,21 @@ interface Address {
 
 export interface User {
   id: number;
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   address?: Address;
-  phone: string;
+  phone?: string;
 }
 
 export interface UserState {
   users: User[];
   loading: boolean;
   error: null | string;
+}
+
+interface AddNewUserAction {
+  type: UserActionTypes.ADD_NEW_USER;
+  payload: User;
 }
 
 interface FetchUsersRequestAction {
@@ -41,4 +47,5 @@ interface FetchUsersErrorAction {
 export type UserAction =
   | FetchUsersRequestAction
   | FetchUsersSuccessAction
-  | FetchUsersErrorAction;
+  | FetchUsersErrorAction
+  | AddNewUserAction;

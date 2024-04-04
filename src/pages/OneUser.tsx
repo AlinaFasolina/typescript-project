@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { User } from "../types/userTypes";
 import axios from "axios";
-import { Container } from "../styles/main";
+import { Breadcrumbs, Container, Crumb } from "../styles/main";
 
 export const OneUser: React.FC = () => {
   const params = useParams();
@@ -26,7 +26,28 @@ export const OneUser: React.FC = () => {
 
   return (
     <Container>
-      <div>{user && <div>{user.name}</div>}</div>
+      <Breadcrumbs>
+        <Crumb>
+          <NavLink to="/">Home</NavLink>
+        </Crumb>
+        <Crumb>
+          <NavLink to="/users">Users List</NavLink>
+        </Crumb>
+        <Crumb>User</Crumb>
+      </Breadcrumbs>
+
+      <div>
+        {user && (
+          <div>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+            <p>{user.phone}</p>
+            <p>{user.address?.city}</p>
+            <p>{user.address?.street}</p>
+            <p>{user.address?.zipcode}</p>
+          </div>
+        )}
+      </div>
     </Container>
   );
 };

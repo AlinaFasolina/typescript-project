@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const UserContainer = styled.div`
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 4px;
 `;

@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { fetchUsers } from "../store/actions/userActons";
 import { useDispatch } from "react-redux";
 import { RootState } from "../store/index";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { UserItem } from "../components/UserItem";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { Container } from "../styles/main";
+import { Breadcrumbs, Container, Crumb } from "../styles/main";
+import { AddUserForm } from "../components/AddUserForm";
 export const Users: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,8 +22,15 @@ export const Users: React.FC = () => {
 
   return (
     <Container>
-      <button onClick={() => navigate("/")}>Back to homepage</button>
+      <Breadcrumbs>
+        <Crumb>
+          <NavLink to="/">Home</NavLink>
+        </Crumb>
+        <Crumb>Users List</Crumb>
+      </Breadcrumbs>
+
       <h1>Users List</h1>
+      <AddUserForm />
       {loading && <Oval />}
       {error && <h1>...error</h1>}
       {users &&

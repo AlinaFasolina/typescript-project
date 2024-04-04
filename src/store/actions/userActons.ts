@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { UserActionTypes, UserAction } from "../../types/userTypes";
+import { UserActionTypes, UserAction, User } from "../../types/userTypes";
 import axios from "axios";
 
 export function fetchUsers() {
@@ -21,3 +21,11 @@ export function fetchUsers() {
     }
   };
 }
+
+export const addNewUser = (user: User) => {
+  return {
+    type: UserActionTypes.ADD_NEW_USER,
+    payload: user,
+  }
+}
+

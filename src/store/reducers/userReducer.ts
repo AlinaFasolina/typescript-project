@@ -1,8 +1,4 @@
-import {
-  UserActionTypes,
-  UserAction,
-  UserState,
-} from "../../types/userTypes";
+import { UserActionTypes, UserAction, UserState } from "../../types/userTypes";
 
 const initialState = {
   users: [],
@@ -32,6 +28,11 @@ export const userReducer = (
         users: [],
         loading: false,
         error: null,
+      };
+    case UserActionTypes.ADD_NEW_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
       };
     default:
       return state;
